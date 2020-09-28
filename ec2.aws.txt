@@ -1,0 +1,5 @@
+### Pruebas taggeo EC2
+aws ec2 describe-snapshots --owner-ids self --query 'Snapshots[*].[Description, SnapshotId]' --output text | grep ami-0f1d74427d19abcfd | awk '{print $8}' | while read line; do echo $line; done
+
+### Ejecución taggeo ec2
+aws ec2 describe-snapshots --owner-ids self --query 'Snapshots[*].[Description, SnapshotId]' --output text | grep ami-0f1d74427d19abcfd | awk '{print $8}' | while read line; do aws ec2 create-tags --resources $line --tags Key=temp10,Value=temp4 test Key=temp11,Value="SAP HanaERP"; done

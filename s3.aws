@@ -1,0 +1,2 @@
+### Cambio de Storage Class S3 a S3
+aws s3 cp s3://belc-emtel/2018/11/ s3://belc-emtel2018/11/ --storage-class DEEP_ARCHIVE --recursive --profile personal

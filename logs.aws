@@ -1,0 +1,8 @@
+###Obtener logs stream
+aws logs describe-log-streams --log-group-name /aws/lambda/Lambda_Learning --log-stream-name-prefix test --output text --profile personal | awk '{print $7}' | while read line; do echo $line; done
+
+### Eliminar logs streams excepto los marcados
+aws logs describe-log-streams --log-group-name /aws/lambda/Lambda_Learning --log-stream-name-prefix test --output text --profile personal | grep -v  test125 | grep -v  test124 | awk '{print $7}' | while read line; do aws logs delete-log-stream --log-group-name /aws/lambda/Lambda_Learning --log-stream-name $line --profile personal; done
+
+
+
